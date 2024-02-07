@@ -15,22 +15,21 @@ import params
 from customtrainer import CustomTrainer
 
 
-CONTEXT_LENGTH = 2048
-
+CONTEXT_LENGTH = 512
 
 # Commented parameters correspond to the small model
 default_config = SimpleNamespace(
     output_dir="output",
-    num_train_epochs=1,
-    per_device_train_batch_size=8,
-    per_device_eval_batch_size=4,
+    num_train_epochs=3,
+    per_device_train_batch_size=64,
+    per_device_eval_batch_size=32,
     evaluation_strategy="steps",
     save_strategy="steps",
-    eval_steps=2497,
-    logging_steps=2497,
+    eval_steps=60,
+    logging_steps=60,
     logging_first_step=True,
-    save_total_limit=1,
-    save_steps=2497,
+    save_total_limit=5,
+    save_steps=60,
     lr_scheduler_type="cosine",
     learning_rate=5e-4,
     warmup_ratio=0.01,
