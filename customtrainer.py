@@ -19,6 +19,18 @@ class CustomTrainer(Trainer):
         ignore_keys=None,
         metric_key_prefix="eval",
     ):
+        # Import fluidsynth module here
+        import fluidsynth
+
+        # Adjust FluidSynth polyphony
+        fluidsynth_settings = {
+            "synth.polyphony": 128,  # Increase polyphony to 128 voices
+            # Add more FluidSynth settings as needed
+        }
+        
+        # Initialize FluidSynth with modified settings
+        fluidsynth.init(**fluidsynth_settings)
+        
         # Call super class method to get the eval outputs
         eval_output = super().evaluation_loop(
             dataloader,
